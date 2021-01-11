@@ -22,7 +22,12 @@ onSelect(product: Product){
   }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+     this
+        .productService
+        .products$
+        .subscribe(
+          results => this.products = results
+        )
   }
 
 }
