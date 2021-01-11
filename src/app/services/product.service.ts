@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../products/product.interface';
 
+//@Injectable is used to inject to other services 
+//not to inject to other components
 @Injectable({
   providedIn: 'root'
 })
