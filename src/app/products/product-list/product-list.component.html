@@ -3,7 +3,7 @@
 </h2>
 
 <ul class="products">
-    <li *ngFor="let product of products"
+    <li *ngFor="let product of products$ | async "
         [class.discontinued]="product.discontinued"
         
         [class.selected]="selectedProduct === product"

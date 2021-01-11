@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../product.interface';
 
@@ -11,7 +12,9 @@ export class ProductListComponent implements OnInit {
 
 title : string = 'Products';
 products : Product[];
+products$: Observable<Product[]>;
 selectedProduct: Product;
+
 
 onSelect(product: Product){
   this.selectedProduct = product;
@@ -22,12 +25,23 @@ onSelect(product: Product){
   }
 
   ngOnInit(): void {
-     this
-        .productService
-        .products$
-        .subscribe(
-          results => this.products = results
-        )
+
+    
+
+    //  this
+    //     .productService
+    //     .products$
+    //     .subscribe(
+    //       results => this.products = results
+    //     )
+
+      //Or we can use this instead using a async pipe 
+      
+    this.products$ = this.productService.products$;
+    
+   
+
+
   }
 
 }
