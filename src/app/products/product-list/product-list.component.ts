@@ -10,6 +10,11 @@ export class ProductListComponent implements OnInit {
 
 title : string = 'Products';
 products : Product[];
+selectedProduct: Product;
+
+onSelect(product: Product){
+  this.selectedProduct = product;
+}
 
   constructor() { 
     this.products = [
