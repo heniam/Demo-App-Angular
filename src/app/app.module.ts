@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http'
-import { ProductsModule } from './products/products.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +13,16 @@ import { ProductsModule } from './products/products.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ProductsModule
+    
+    ///anytime you activate a lazy-loading you need to remove 
+    //the from the imports, as its dynamically loaded at runtime 
+    // we removed it 
+
+    SharedModule,
+    AppRoutingModule,
+    
     
   ],
   providers: [],
