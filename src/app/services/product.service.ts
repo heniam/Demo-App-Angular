@@ -27,7 +27,9 @@ export class ProductService {
                         .pipe(
                           delay(1500),
                           tap(data => console.log(data)),
+                          shareReplay(),
                           catchError(this.handleError)
+                          
                           );
                         
 
