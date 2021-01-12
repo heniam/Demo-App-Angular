@@ -25,22 +25,8 @@ export class ProductService {
                         http
                         .get<Product[]>(this.baseUrl)
                         .pipe(
-                          // delay(1500)
-
-                          //tap just taps to the data stream
-                          // its a cheap way to debug 
-                          tap(console.log),
-                           //same as the above and they are literally the same 
-                           tap(data => console.log(data),
-
-
-
-
-                          //makes a table on the console log 
-                          tap(console.table)
-
-                         
-                          )
+                          delay(1500),
+                          tap(data => console.log(data))
                           );
                         
 

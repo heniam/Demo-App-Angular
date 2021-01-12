@@ -15,6 +15,27 @@ products : Product[];
 products$: Observable<Product[]>;
 selectedProduct: Product;
 
+//Pagination 
+pageSize = 5;
+start = 0;
+end = this.pageSize;
+currentPage = 1;
+
+previousPage(){
+  this.start -= this.pageSize;
+  this.end -= this.pageSize;
+  this.currentPage--;
+  this.selectedProduct = null;
+}
+
+nextPage(){
+  this.start += this.pageSize;
+  this.end += this.pageSize;
+  this.currentPage++;
+  this.selectedProduct = null;
+}
+
+
 
 onSelect(product: Product){
   this.selectedProduct = product;
@@ -36,7 +57,7 @@ onSelect(product: Product){
     //     )
 
       //Or we can use this instead using a async pipe 
-      
+
     this.products$ = this.productService.products$;
     
    
