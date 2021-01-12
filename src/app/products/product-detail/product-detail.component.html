@@ -1,5 +1,10 @@
 <!-- <div *ngIf="product != undefined"> -->
-<div *ngIf="product">
+<ng-template #noproduct>
+    <h2> No Product.</h2>
+</ng-template>
+
+
+    <div *ngIf="product;else noproduct">
     <h2>{{product.name | uppercase}}</h2>
     <img style="float:right" [src]="product.imageUrl" *ngIf="product.imageUrl" width="250" />
     <h3>{{product.description}}</h3>
