@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../product.interface';
 
@@ -14,6 +15,7 @@ title : string = 'Products';
 products : Product[];
 products$: Observable<Product[]>;
 selectedProduct: Product;
+errorMessage: string;
 
 //Pagination 
 pageSize = 5;
@@ -47,7 +49,18 @@ onSelect(product: Product){
 
   ngOnInit(): void {
 
-    
+    //Or we can use a async pipe instead of using subscribe 
+    this.products$ = this
+                        .productService
+                        .products$
+                        .pipe(
+                          catchError(
+                            error => {
+                              this.errorMessage = error;
+                              return EMPTY;
+                            }
+                          )
+                        );
 
     //  this
     //     .productService
@@ -56,9 +69,7 @@ onSelect(product: Product){
     //       results => this.products = results
     //     )
 
-      //Or we can use this instead using a async pipe 
-
-    this.products$ = this.productService.products$;
+      
     
    
 
